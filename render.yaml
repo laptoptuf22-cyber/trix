@@ -1,0 +1,7 @@
+# Render Blueprint: a free static site, rebuilt on every push to the default branch.
+services:
+  - type: web
+    runtime: static
+    name: trix-counting-trainer
+    buildCommand: npm ci --include=dev && npm run build
+    staticPublishPath: ./out
