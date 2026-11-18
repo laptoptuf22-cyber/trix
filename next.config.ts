@@ -9,10 +9,12 @@ if (isGithubActions && process.env.GITHUB_REPOSITORY) {
   }
 }
 
+const basePath = process.env.BASE_PATH || repo;
+
 const nextConfig: NextConfig = {
   // The whole app runs in the browser, so `next build` writes a plain static site to `out/`.
   output: 'export',
-  basePath: process.env.BASE_PATH ?? repo,
+  ...(basePath ? { basePath } : {}),
   reactStrictMode: true,
   images: {
     unoptimized: true,
